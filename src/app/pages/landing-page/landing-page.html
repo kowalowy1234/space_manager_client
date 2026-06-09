@@ -1,1 +1,86 @@
-<p>landing-page works!</p>
+<nav class="w-full p-4 flex items-center gap-3">
+    <div class="flex items-center gap-3">
+        <p-skeleton shape="circle" size="2.4rem"></p-skeleton>
+        <p>SPACE MANAGER</p>
+    </div>
+
+    <div class="ml-auto">
+        <button pButton size="small" [rounded]="true" severity="secondary">
+            <span class="pi pi-eye" pButtonIcon></span>
+        </button>
+    </div>
+    <div>
+        <button pButton size="small" [rounded]="true" severity="secondary">
+            <span class="pi pi-moon" pButtonIcon></span>
+        </button>
+    </div>
+    <div>
+        <a routerLink="/sign-in" pButton size="small">
+            <span class="pi pi-sign-in" pButtonIcon></span>
+            <span pButtonLabel>Sign in</span>
+        </a>
+    </div>
+</nav>
+
+<section class="w-full flex flex-col justify-center items-center gap-y-10 bg-cyan-50 px-8 py-20 text-center">
+    <h1 class="text-4xl font-bold">Consistent planning of space, staff and equipment in one place.</h1>
+    <p class="max-w-2xl">Forget about spreadsheet chaos. Create event templates, control the availability of unique equipment, and prevent conflicts on an interactive, real-time timeline.</p>
+    <a routerLink="/sign-up" class="my-10 text-3xl" pButton [size]="'large'" severity="contrast" [raised]="true">
+        <span class="pi pi-sign-in" pButtonIcon></span>
+        <span pButtonLabel>Register your organization</span>
+    </a>
+</section>
+
+<section class="flex flex-col gap-10 items-center p-12">
+    <div class="w-2xl max-w-2xl flex gap-14 items-center">
+        <div class="flex-1 flex flex-col gap-2"
+            pAnimateOnScroll
+            enterClass="animate-enter fade-in-10 slide-in-from-l-8 animate-duration-1000"
+            leaveClass="animate-leave fade-out-0"
+        >
+            <h3 class="text-xl font-semibold">No more resource conflicts</h3>
+            <p class="text-justify">The regular calendar does not know that assigning an employee to Room A prevents them from being in Room B at the same time.</p>
+        </div>
+        <div class="flex-1"
+            pAnimateOnScroll
+            enterClass="animate-enter fade-in-10 slide-in-from-r-8 animate-duration-1000"
+            leaveClass="animate-leave fade-out-0"
+        >
+            <p-skeleton height="11rem"></p-skeleton>
+        </div>
+    </div>
+    <div class="w-2xl max-w-2xl flex gap-14 items-center">
+        <div class="flex-1"
+            pAnimateOnScroll
+            enterClass="animate-enter fade-in-10 slide-in-from-l-8 animate-duration-1000"
+            leaveClass="animate-leave fade-out-0"
+        >
+            <p-skeleton height="11rem"></p-skeleton>
+        </div>
+        <div class="flex-1 flex flex-col gap-2"
+            pAnimateOnScroll
+            enterClass="animate-enter fade-in-10 slide-in-from-r-8 animate-duration-1000"
+            leaveClass="animate-leave fade-out-0"
+        >
+            <h3 class="text-xl font-semibold">Control over equipment</h3>
+            <p class="text-justify">It's hard to control which projector or medical device is currently free and which is being repaired.</p>
+        </div>
+    </div>
+    <div class="w-2xl max-w-2xl flex gap-14 items-center">
+        <div class="flex-1 flex flex-col gap-2"
+            pAnimateOnScroll
+            enterClass="animate-enter fade-in-10 slide-in-from-l-8 animate-duration-1000"
+            leaveClass="animate-leave fade-out-0"
+        >
+            <h3 class="text-xl font-semibold">Complete plans</h3>
+            <p class="text-justify">Prevent coordinators from forgetting to assign key staff before the event starts using event templates.</p>
+        </div>
+        <div class="flex-1"
+            pAnimateOnScroll
+            enterClass="animate-enter fade-in-10 slide-in-from-r-8 animate-duration-1000"
+            leaveClass="animate-leave fade-out-0"
+        >
+            <p-skeleton height="11rem"></p-skeleton>
+        </div>
+    </div>
+</section>
