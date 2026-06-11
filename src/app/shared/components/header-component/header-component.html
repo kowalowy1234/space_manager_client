@@ -1,10 +1,19 @@
-<nav class="w-full p-4 flex items-center gap-3 absolute top-0 left-0 bg-surface-0">
-    <div class="flex items-center gap-3">
+<nav class="w-full h-16 px-4 flex items-center gap-3 absolute top-0 left-0 bg-surface-0">
+    <div class="flex items-center gap-3 mr-auto">
         <p-skeleton shape="circle" size="2.4rem"></p-skeleton>
         <p>SPACE MANAGER</p>
     </div>
 
-    <div class="ml-auto">
+    
+    @if (!isSignedIn() && !isInSignInPage()) {
+        <div>
+            <a routerLink="/sign-in" pButton size="small">
+                <span class="pi pi-sign-in" pButtonIcon></span>
+                <span pButtonLabel>Sign in</span>
+            </a>
+        </div>
+    }
+    <div>
         <button pButton size="small" [rounded]="true" severity="secondary">
             <span class="pi pi-eye" pButtonIcon></span>
         </button>
@@ -13,11 +22,5 @@
         <button pButton size="small" [rounded]="true" severity="secondary">
             <span class="pi pi-moon" pButtonIcon></span>
         </button>
-    </div>
-    <div>
-        <a routerLink="/sign-in" pButton size="small">
-            <span class="pi pi-sign-in" pButtonIcon></span>
-            <span pButtonLabel>Sign in</span>
-        </a>
     </div>
 </nav>

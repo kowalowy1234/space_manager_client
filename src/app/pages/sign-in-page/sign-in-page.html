@@ -1,1 +1,51 @@
-<p>sign-in-page works!</p>
+<p-toast />
+<div class="w-full h-full flex items-center justify-center">
+    <p-card class="container max-w-100">
+        <ng-template #title>
+            Sign in to your account
+        </ng-template>
+        <form (ngSubmit)="signIn($event)" [formGroup]="form" class="mt-8 mb-8 w-full flex flex-col gap-5" #signInForm>
+            <p-floatlabel variant="on">
+                <input class="w-full" id="email" type="text" pInputText formControlName="email"/>
+                <label for="email">Email</label>
+            </p-floatlabel>
+
+            @if (email?.invalid && (email.dirty || email.touched)) {
+                <p-message severity="error" class="flex flex-col">
+                    @if(email.hasError('required')) {
+                        <p class="text-sm">Email is required</p>
+                    }
+                    @if(email.hasError('email')) {
+                        <p class="text-sm">Email must be valid</p>
+                    }
+                </p-message>
+            }
+
+            <p-floatlabel variant="on">
+                <p-password class="w-full" inputId="password" [toggleMask]="true" formControlName="password" [invalid]="form.invalid" [feedback]="false" autocomplete="off" fluid/>
+                <label for="password">Password</label>
+            </p-floatlabel>
+
+            @if (password?.invalid && (password.dirty || password.touched)) {
+                <p-message severity="error" class="flex flex-col">
+                    @if(password.hasError('required')) {
+                        <p class="text-sm">Password is required</p>
+                    }
+                </p-message>
+            }
+        </form>
+        <ng-template #footer>
+            <div class="card-footer flex flex-col gap-3">
+                <button pButton (click)="signInForm.submit()">
+                    <span class="pi pi-sign-in" pButtonIcon></span>
+                    <span pButtonLabel>Sign in</span>
+                </button>
+                <button pButton severity="info" (click)="signInWithGoogle()">
+                    <span class="pi pi-google" pButtonIcon></span>
+                    <span pButtonLabel>Sign in with google</span>
+                </button>
+                <p class="text-center">Don't have an account? <a routerLink="/sign-up" class="text-">Sign up</a></p>
+            </div>
+        </ng-template>
+    </p-card>
+</div>
