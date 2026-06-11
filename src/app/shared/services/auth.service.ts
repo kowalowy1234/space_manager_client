@@ -2,7 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class AuthService {
     private _accessToken: string | null = null;
     private _refreshToken: string | null = null;
@@ -10,7 +12,10 @@ export class AuthService {
     constructor(
         private readonly http: HttpClient,
         private readonly router: Router,
-    ) {}
+    ) {
+        this._accessToken = localStorage.getItem('accessToken') || null;
+        this._refreshToken = localStorage.getItem('refreshToken') || null;
+    }
 
     getAccessToken() {
         return this._accessToken;
