@@ -1,10 +1,16 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from './shared/services/auth.service';
+import { Skeleton } from "primeng/skeleton";
+import { ButtonDirective } from "primeng/button";
+import { AppHeaderComponent } from "./shared/components/header-component/header-component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    AppHeaderComponent
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
