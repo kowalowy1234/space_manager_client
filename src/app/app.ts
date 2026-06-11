@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,17 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('client');
+
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    if (this.authService.isSignedIn()) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 }
