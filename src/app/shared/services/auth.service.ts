@@ -13,8 +13,8 @@ export class AuthService {
         private readonly http: HttpClient,
         private readonly router: Router,
     ) {
-        this._accessToken = localStorage.getItem('accessToken') || null;
-        this._refreshToken = localStorage.getItem('refreshToken') || null;
+        this._accessToken = localStorage.getItem('SPCMGR_accessToken') || null;
+        this._refreshToken = localStorage.getItem('SPCMGR_refreshToken') || null;
     }
 
     getAccessToken() {
@@ -36,10 +36,12 @@ export class AuthService {
 
     setAccessToken(accessToken: string) {
         this._accessToken = accessToken;
+        localStorage.setItem('SPCMGR_accessToken', accessToken);
     }
 
     setRefreshToken(refreshToken: string) {
         this._refreshToken = refreshToken;
+        localStorage.setItem('SPCMGR_refreshToken', refreshToken);
     }
 
     signIn(email: string, password: string) {
@@ -53,7 +55,10 @@ export class AuthService {
     }
     
     signInWithGoogle() {
-        return this.http.get('auth/sign-in/google');
+        return this.http.get<{
+            access_token: string;
+            refresh_token: string;
+        }>('auth/sign-in/google');
     }
 
     signOut() {
